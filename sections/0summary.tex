@@ -1,0 +1,51 @@
+
+%Say very briefly 1) what the review is about, 2) what the main content is, 3) what the main aim or objectives are, and 4) what the main findings are. End with a strong sentence that highlights the significance of the work presented in the review and any envisioned long-standing contribution to the body of knowledge.
+
+
+
+%%%Summary
+\chapter*{Abstract}
+%Say very briefly 1) what the review is about, 2) what the main content is, 3) what the main aim or objectives are, and 4) what the main findings are. End with a strong sentence that highlights the significance of the work presented in the review and any envisioned long-standing contribution to the body of knowledge.
+Olympic sailing is characterize by one-boat design in each class, with its particular rules. %These classes are: one windsurfing board, two keelboats and four variants on the dinghy.
+Because improvements on the boat are not allow; the scope for many researches is focus on the athlete, enhancing strength and other motor skills. On each class, the competition stand for many races and days where the configurations of the route and the environmental conditions diverse from each other. The winner is the one with the lowest score. In each race, points are given  and %fand in each race every position gives points; 
+the higher position the lower score. Athletes and coaches confront distinctive scenarios for which they take different decisions in order to win. One of these decisions refers to the sailing direction taken at the start line.
+
+During competition, it is the athlete who decide the number maneuvers and the direction of each; specially on the upwind condition, the boat sails against the wind
+%Since the sailboat can not displace towards the wind, tacking manoeuvers are perform. This type of path is described as 
+in a zig-zag pattern that can be started on the left- or on the right-hand side. %Another condition is dictated when the boat is dis- placed in the same direction as wind. These conditions shows that feasible paths are asymmetrical[Dol12]. 
+Because athletes are not allow to get any information or feedback from coaches; the information of how to course the race before competition is crucial. \newline
+%As in many race competitions, the winner is the one that first cross the end line. In other words
+The fastest path results from a trajectory sailed with a minimal time, independently of its length. Because trajectories are defined by the route to sail, the wind and current fields characteristics as intensity and direction, and the sail angle respect to the wind. The selection of the fastest path requires the discretization of the area cover by the route. If wind and current fields are not constants, they also required the discretization respect to location and time. These process define the granularity of the problem to solve and in consequence the computation time to find a solution. % The area of sail  These two discretizations are  Because of this, the problem can be define as an optimization problem with the objective to miminizes the time of the trajectory to f 
+%to with the minimal time, The relevance of the fastest path is because during competition the boat that first cross the end line is the winner which means
+
+The purpose of this study is to model the path for sailing competitions and optimize the minimal time of sailing routes for the Laser (Olympic class) shaped by wind. Furthermore, identify the effects of different time steps on the resulting times and trajectories.
+%In other words,%the critical variables influenced by the wind that determine it.
+%the study seek 
+%To answer the question, What is the optimal sailing route for the Laser (Olympic class) shaped by wind. The objective is to analyze the sensibility of the optimal route due to changes on the wind field and start times. This will determine the zones and the shape trajectory of the optimal path. 
+%and conditions that shape not only the optimal but the least route also. 
+To answer this question first, the physical model of yachts was reviewed. Despite the similarities between dinghies(Laser boats) and yachts, the physical model was adapted by adding two coefficients related with sails which indicate%the research focusing on dinghies is significantly lower as consequence adaptations have been made to represent
+how different is steering a dinghy from a yacht. Moreover, these adaptations are reflected on the %These adaptations are related with the
+Velocity Prediction Polar (VPP)diagram. By using the VPP and the wind intensity is possible to set the direction at which the dinghy reach is maximum velocity respect to the wind. This approach is known as Velocity Made Good (VMG).%  and to more specific and the use of sails
+%Despite the similarities between dinghies and yachts, the research focusing on dinghies is significantly lower as consequence adaptations have been made to represent how it is steering, one of this is related with the VPP's and the use of sails. The same situation happens when the topic of research is related with optimal routes.  Since Olympic sailing is focused on the seamanship, the understanding of physical principals intends to provide or reveal hints that helps them to train and contest effectively regardless the location and routes. \newline
+
+%The report answers the question of what device should be developed 
+%%most be included on a portable device% 
+%for people without impaired limbs; such as the ageing,  to enhance the motion of the upper limb in terms of force and what are the most (technically) feasible features to include on it to improve the life quality of the users.% %design that enhances the human force of the upper limb. 
+%To answers these questions first  
+%%This will be done by means of the 
+%a literature study about the topic was done. Then, an inventory analysis was developed about the devices available on the market that enhance force. From this analysis,  the requirements and the critical features were identified and three concepts were developed. %the .% 
+%This report asses them 
+%%these portable designs %the three concepts  
+%with the multi-criteria analysis method to identify the most feasible design to enhance the force of the upper limb for people without impaired limbs. The design %with the higher score 
+%obtained from the assessment was the powered exoskeleton with monitoring system.
+The algorithm developed is limited to dinghies which is one of the Olympic boat classes and the smallest; and it was validated by comparing its results against the results of previous races located at Hyères, France during 2018. Three wind conditions were tested, first is was assume that the wind intensity and direction are constant along the area of the route; the second, considers a forecast wind field as time-space-dependent variable changing every 10 minutes without current and neglecting the wave disturbances and twisting effects on the sail, the last test condition uses the wind measurements took during the competition. 
+
+The preliminary tests show that results are closer when the wind is assuming constant and when VPP used is estimating from the top 10 competitors of the competition. The dynamic model of the dinghy requires further research to give more predictable and accurate results. Olympic Classes as dinghy is not a widespread research topic. Besides most of the findings related to path optimization for boats are related with cargo ships and vessels, where the main objective is to minimize the fuel costs, because these ship can be set to navigate at a constant speed. The influence of the wind is not the same as for the Olympic Classes. Another consideration that should be taken is related with the movement of the sailor which affect the equilibrium of the boat and therefore the maximum speed that could be reach.  %The reason for this is that limited data was available, as sailboat modelling is not a widespread
+ %Also, on formulating a sailing trajectory optimization as an optimal control problem, very limited information was available.
+%Although quite some problems have been solved, the results can be improved by future re- search, by addressing the most important recommendations below.
+%Towing tank, open water and wind tunnel tests could be carried out to determine the hy- drodynamic and aerodynamic characteristics of the dinghies, to be able to incorporate higher order dynamics into the model over a wider range of boat and wind speeds.
+%In this thesis the focus was on determining the advantage in an upwind leg of the route based on currents, but a more detailed model could also help in the future to optimize and analyse the trimming of the sail, rudder action or even the movement of the sailor.
+%Furthermore, the focus was on the influence of currents, but in the results some cases subject to wind variations were treated. In future research wind dynamics could be implemented much more detailed. For this, a proper wind model should be developed. But this would need specific attention because wind is much more subject to uncertainties than currents.
+%Furthermore, other boat types, multiple competitors and weather uncertainties could be im- plemented in future research.
+
+The report is set as follows: Chapter 1 refers to the basics concepts of sailboat and wind fields, Chapter 2 describes the mathematical model for sailboat in general and the modifications required. The validation of the model is reviewed on chapter 3. In Chapter 4 the obtained results are analyzed and finally the conclusions and recommendations are described in Chapter 5.\par 

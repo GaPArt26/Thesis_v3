@@ -1,0 +1,153 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage{subfig}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{esvect}
+\usepackage{caption}
+\usepackage{cite}
+%\usepackage{subcaption}
+\usepackage{epstopdf}
+\usepackage{fancyhdr} 
+\usepackage{fullpage}
+\usepackage{eso-pic} 
+\usepackage[english]{babel}
+\usepackage{rotating}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{rotfloat}
+\usepackage[titletoc]{appendix}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{hyperref}
+%\usepackage[numbers]{natbib}
+\usepackage{titlesec}
+\usepackage{url}
+\usepackage{colortbl}
+	\definecolor{maroon}{rgb}{0.75, 0.75, 0.75}
+%\setlength\parindent{10pt}
+\setlength{\parindent}{5ex}
+%\setlength{\parindent}{4em}
+\setlength{\parskip}{0.5em}
+%\setlength{\parskip}{1.5pt}
+\usepackage[export]{adjustbox}
+\usepackage{wrapfig}
+\usepackage{gensymb}
+\usepackage[official]{eurosym}
+\usepackage[nice]{units}
+\usepackage{changepage}
+\usepackage{pdfpages}
+\usepackage{titlepic}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{soul}
+\usepackage{breqn}
+%\usepackage[prefix,intoc]{nomencl}
+%\usepackage[nottoc]{tocbibind}
+\RequirePackage{ifthen}
+\usepackage{listings}
+%\usepackage{tocloft}
+\usepackage[framed,numbered]{matlab-prettifier}
+
+\lstset{
+  style      = Matlab-editor,
+  basicstyle = \fontfamily{pcr}\selectfont\footnotesize, % if you want to use Courier
+}
+
+%\usepackage{nomencl}
+\usepackage[intoc, english]{nomencl}
+\makenomenclature
+%% SET types either acronym or symbol FORMAT1 for more references check https://www.overleaf.com/learn/latex/Nomenclatures
+\RequirePackage{ifthen}
+\renewcommand{\nomgroup}[1]{%
+\ifthenelse{\equal{#1}{S}}{\item[\textbf{Symbols}]}{
+\ifthenelse{\equal{#1}{A}}{\item[\textbf{Abbreviations}]}{}}}
+%%%%
+
+%% Form 2 to set the list of abbreviations and symbols
+%\usepackage{etoolbox}
+%\renewcommand\nomgroup[1]{%
+%  \item[\bfseries
+%  \ifstrequal{#1}{S}{Symbols}{%
+%  \ifstrequal{#1}{A}{Acronyms}{%
+%  \ifstrequal{#1}{C}{Other Symbols}{}}}%
+%]}
+
+% ADD GLOSSARIES 
+%https://www.overleaf.com/learn/latex/Glossaries
+\usepackage[acronym]{glossaries}
+\makeglossaries
+\newacronym{sname}{SNAME}{Society of Naval Architects and Marine Engineers}
+\newacronym{dsyhs}{DSYHS}{Delft Systematic Yacht Hull Series}
+
+\newacronym{b_aw}{$\beta_{aw}$}{apparent wind angle}
+%% List of equations
+%\usepackage{tocloft}
+
+
+% Subtract 1 from counters that are used
+\renewcommand{\thesection}{\thechapter.\number\numexpr\value{section}-1\relax}
+\renewcommand{\thesubsection}{\thesection.\number\numexpr\value{subsection}-1\relax}
+\renewcommand{\thesubsubsection}{\thesubsection.\number\numexpr\value{subsubsection}-1\relax}
+\setcounter{secnumdepth}{3}
+
+\setcounter{chapter}{0}% Not using chapters, but they're used in the counters
+ 
+
+    
+\title{Review chapter}
+\author{Gabriela Pardo Arteaga 4617630}
+
+\date{\today}
+
+
+\pagenumbering{roman}
+
+\begin{document}
+\maketitle
+
+%\input{sections/0summary.tex}
+%\addcontentsline{toc}{chapter}{List of Symbols}
+%\chapter*{List of Symbols}
+\renewcommand{\nomname}{List of Symbols}\label{list:symbols}
+\renewcommand{\nompreamble}{The next list describes several symbols that will be later used within the body of the document}
+\printnomenclature
+
+\newpage
+
+\renewcommand*\contentsname{Summary}
+
+\tableofcontents
+%\addcontentsline{toc}{chapter}{}{}
+
+%\restoretocpage
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{sections/1introduction.tex}
+\input{sections/2SailinBoatModel.tex}
+
+\bibliographystyle{unsrt} %ieeetr %alpha %apalike unsrt
+\bibliography{sections/thesisref}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+\printglossary[type=\acronymtype]
+\addcontentsline{toc}{chapter}{List of Acronyms}
+
+\end{document}

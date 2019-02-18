@@ -1,0 +1,42 @@
+\documentclass{tudelft-report}
+
+\begin{document}
+
+%% Use Roman numerals for the page numbers of the title pages and table of
+%% contents.
+\frontmatter
+
+\title[Sailing Path]{Optimization}
+\author{Gabriela.\ Pardo Arteaga}
+\affiliation{Technische Universiteit Delft}
+%Temp avoid coverimage-increase speead loading
+%\coverimage{cover.jpg}
+%\makecover
+
+%% Include an optional title page.
+\input{title}
+
+\input{preface}
+\input{sections/abstract.tex}
+\tableofcontents
+%\gobbletocpage
+\addcontentsline{toc}{chapter} {Abstract}
+%\restoretocpage
+
+%% Use Arabic numerals for the page numbers of the chapters.
+\mainmatter
+
+\input{sections/intro.tex}
+
+%for reference Previous
+%\input{chapter-1}
+%% Use letters for the chapter numbers of the appendices.
+%\appendix
+
+%\input{appendix-a}
+\bibliography{biblio}
+
+%for reference Previous
+%\bibliography{report}
+\end{document}
+
