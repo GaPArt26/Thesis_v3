@@ -1,0 +1,79 @@
+%\chapter{Integrating the Weather Model into the Sailing Path Generation}
+% Question to answers during the next chapters
+%%% Instruments used, set-up, materials
+%%Description of the instruments and materials
+%%How the instruments are set-up and what auxiliary connections might need to be used.
+% How does the wind model at different time steps is going to be integrated?
+%What mathematical approach is going to be use for the problem?
+%How many control points define the route ? why?
+%Which solver, software or algorithm is going to be use?
+%How is defined the optimization problem?
+% Analysis Questions
+%What were the changes in the route due to the step time change?
+%What is the shape of the area considered? Set-Up
+%The manoeuvres/turn  jargon and conditions are represented on the model?
+
+\chapter{The Weather Research and Forecasting Model(WRF) in the Sailing Path Generation} \label{ch:weatherModel} %The Weather Model and the Generation of the Sailing Path
+
+%Introduction
+The wind model used in this research is a numerical weather prediction (\acrshort{nwp}) knows as the Weather Research and Forecasting Model (\acrshort{wrf}). This particular model has the ability to forecast weather and serves as a tool for atmospheric research.  
+This chapter explains the characteristics of the common weather forecast provided during and before the Olympic sailing races, and compared it with the requirements of athletes and coaches. This comparison shows the importance of a customize weather(wind) model and describes its characteristics and limitations. The last part of the chapter explains the reference frames and its relation with %how the wind velocity is going to be implemented in 
+the sailboat velocity.\par
+%model used in this research. 
+
+The importance of the wind is not only because it is considered the main propulsion source of the sailboat; but also, because it is the wind that demands changes to the seamanship, like direction on the rudder and sail, to balance the the kinematic equations of chapter \ref{ch:physics_sailboat}, and reach the maximum velocity  estimated by the \acrshort{vpp}.In such manner, the seamanship uses the wind information to maximize the velocity of the sailboat by adjusting the direction of the sailboat. \par 
+
+\nomenclature[A]{NWP}{Numerical Weather Prediction}
+\nomenclature[A]{WRF}{Weather Research and Forecasting Model}
+
+%The Weather Research and Forecasting (WRF) model is a numerical weather prediction (NWP) system for forecasting weather and atmospheric research. Becuase of this duality it 
+
+
+%The seamanship determine the direction of the sailboat      based on the wind direction. In the other hand, \acrshort{vpp} determines the maximum speed that the sailboat can attain at different wind velocities and directions.
+
+\section{The application of the weather models into Olympic Sailing Races}
+%WRF weather models into Olympic sailing races}
+
+A wind model forecast is based on a 3 dimensional time-space model, which can be described as a 4 dimensional model. The resolution of this model or granularity is defined by the size of the data sets that describes it. Moreover, the use of weather models during the summer Olympic Games is not new but neither widely used. The main use of them in sailing is as informative source for the organizers, it helps to warranty the safety of the competitors, like in the Para-Olympic events and reduce delays due the wind regulation of the competition  \cite{spark2004wind},\cite{sheng2009structure}, \cite{golding2014forecasting}. Only \cite{giannaros2018ultrahigh} %a couple of publications refers to these models
+refers to the \acrshort{nwp} model as a tool to develop a strategy plan to course the race for a sailing team. \par 
+
+Previous to the competition athletes and coaches know the exact location of the sailing area which is enclosed by a diameter of a magnitude between 0.8 and 1.5 nm (1.482 - 2.778 km) and course diagrams \cite{SailRaceRio}. For them, it is important to identify wind patterns, like average magnitude, direction, range of variation, location of vortexes, and even the time of the day when they occur. This information allows to the coaches and athletes develop a strategy plan to course the race by avoiding undesirable conditions or to maximizing the use of favorable areas.\par
+
+Even when the location, dates and times of the races are known, the wind characteristic, and details about the area is not well understand. The time horizons of local forecasts of short term know as \textit{nowcast} for public access is between 1 to 2 hours as minimum and up to 6 hours, with a spatial resolution between 40 to 100 km \cite{warner2010numerical}, \cite{kristensen2010weather}. These local predictions uses measurements from weather stations or any weather data available around the area of interest, and extrapolate in time these conditions;
+%This forecast is an extrapolation in time of known weather parameters, including those obtained by means of remote sensing, using techniques that take into account a possible evolution of the air mass
+whereas days or weekly forecast can uses deterministic predictions.\par
+Because sailing Olympic races are set into a grid of 2km with a maximum duration of 1 hour; the public information about wind (weather forecast) does not meet the prerequisite of athletes and coaches. As a consequence, customize models have to been developed for them to provide the information required. An example of this type of model was developed by Giannaros \cite{giannaros2018ultrahigh}, which is defined as a \acrshort{wrf} with \textit{ultrahigh resolution wind forecasting}.\par 
+Ultrahigh resolution,a detailed level of granularity, means that the spatial variation capture by the model is in the order of hundred meters in the horizontal plane. In this case the minimum grid size used was about 200 meters on the area of interest and surrounded by different grid sizes up to 25 km. The vertical dimension was defined by 40 unequally spaced elevations or altitudes; while the length time of the forecast stands for 48 hours starting at 0:00 UTC hours each day with a time interval or time step of 30 minutes. \par \noindent 
+Just considering the area of the course which is placed within a grid of 2 km, a model of ultrahigh resolution has granularity of 10,200 data sets or 39.5$\times 10^6$ data points. The model developed by Giannaros have more data sets since the \acrshort{nwp} model considers a larger area around the races and other factors which will be explain in the next section. Furthermore, it
+%The total number of points for a course placed on a grid of 2km is around 39.5$\times 10^6$  data sets assuming and These model 
+was calculated using 300 computer cores of a high performance computing cluster and more than 900,000 core hours \cite{giannaros2018ultrahigh}. 
+
+Before \cite{giannaros2018ultrahigh}, only \cite{philpott2001optimising} and \cite{allsopp2000optimal} developed a model including the weather for offshore yacht competitions. Instead of using a \acrshort{nwp} model to determine the wind, each work uses a different stochastic process to calculate it. The details about the discretization of time were not provided. Only \cite{philpott2001optimising} acknowledge a short-course competition where the Markov process only applied to the wind direction; the granularity of the model was 4000 data sets with a time step of 5 seconds. %The Markov process used only refers to the direction of the wind.
+Other applications of wind models refers to vessels routing where the focus is on fuel costs and other logistics metrics. \par 
+% add conclusion of the model
+The \acrshort{wrf} model can provide the detailed information required by the sailors and coaches of Olympics Classes; however, it demands time and high performance computing equipment, without considering the preliminary input data and validation process it requires to have a feasible and reliable model to work with. In the other hand, the inclusion of weather models for path generation has not evaluated the sensibility of the trajectory due to the granularity of the model. The next section will provide the details about \acrshort{wrf} model used for this project and as well as general characteristics of this type of models. \par % and how the findings of \cite{giannaros2018ultrahigh} related to its usage are considered.\par
+
+
+
+\section{Components of the WRF Wind Model}
+Weather models, like wind or current models are discretized over the space and time because the data is organized into a four-dimensional grid data sets. The most used computer formats to share this information are GRIB(.grib) and NETCDF(.nc). The form in which they organize the information may differ but both formats contain the volume representation of the wind model. A straightforward format sometimes used to share the information is the tabular format with all the variables as headers. For the purpose of this project the model provided is a \acrshort{wrf} wind model stored in a NETCDF file while the measured data from past race events is provided in a tabular format. \par
+
+\subsection{The WRF Model }
+The \acrshort{wrf} is a model that combines global atmospheric models with regional measurements to developed high-resolution models. This means that regional models are inserted within global models as a results its range of applications is from meters to many latitude-longitude degrees. The integration allows the identification of small climate variations and other type of phenomena, like precipitations. The incorporation of observable data measured at a constant rate and at known locations given flexibility to the model and unification of the available data \cite{warner2010numerical}. \par
+
+\subsection{Spatial Representation of the Wind Model}
+The information stored of the wind model in the NETCDF file is organized in dimensions, variables, and attributes defined as data sets \cite{netcdf56302}. In this case 4 coordinates describe location and time of %different variables, in this case
+the wind velocity.  \par 
+
+
+
+
+The points on the space grid of the \acrshort{wrf} model are quasi-regular, this because the grid is defined by the map projection of the Earth's surface used. Each point or intersection of the grid is a data point. In this case the it is defined by 4 dimensions ($(n_{x_{i},y_{j},z_{k},t)}$) that represents a value of a specific variable.%, which could be either a measurement or an estimation. 
+
+The most common type of map projection used on atmospheric modeling are shown in figure .
+The main idea of these projections is that a set of rays coming from the same axis of rotation project points of the sphere into the  surface of projection. The Mercator map projection is base on a cylinder projection which can be make flat when it is cut. So each point or feature on the sphere is projected on the cylinder, this allows the flat representation of the sphere however at some locations some geometrical characteristics are out of proportion. The advantage of this map representations is that the angles between curves are preserved and the distance distortions is the same in all directions a a point. The map projection used then basically depends on the latitude of intereset. 
+
+
+Because weather models are a volume representation of a particular region it is important to know how the data points are stored so it can be either manipulated or extracted, like the height, if it does not match the CE of the sail, equation \ref{eq:wind_h} should be used otherwise an extraction of that level should be done. \par
+
+\section{Reference Frames the relation between wind and sailboat velocities}

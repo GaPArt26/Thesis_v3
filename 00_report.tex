@@ -91,25 +91,26 @@
 \newacronym{dsyhs}{DSYHS}{Delft Systematic Yacht Hull Series}
 
 \newacronym{b_aw}{$\beta_{aw}$}{apparent wind angle}
+\newacronym{vpp}{VPP}{Velocity Prediction Program/Polar}
+\newacronym{nwp}{NWP}{Numerical Weather prediction}
+\newacronym{wrf}{WRF}{Weather Research and Forecasting model}
+
 %% List of equations
 %\usepackage{tocloft}
 
 
 % Subtract 1 from counters that are used
-\renewcommand{\thesection}{\thechapter.\number\numexpr\value{section}-1\relax}
-\renewcommand{\thesubsection}{\thesection.\number\numexpr\value{subsection}-1\relax}
-\renewcommand{\thesubsubsection}{\thesubsection.\number\numexpr\value{subsubsection}-1\relax}
+\renewcommand{\thesection}{\thechapter.\number\numexpr\value{section}\relax}
+\renewcommand{\thesubsection}{\thesection.\number\numexpr\value{subsection}\relax}
+\renewcommand{\thesubsubsection}{\thesubsection.\number\numexpr\value{subsubsection}\relax}
 \setcounter{secnumdepth}{3}
-
 \setcounter{chapter}{0}% Not using chapters, but they're used in the counters
- 
 
-    
+
 \title{Review chapter}
 \author{Gabriela Pardo Arteaga 4617630}
 
 \date{\today}
-
 
 \pagenumbering{roman}
 
@@ -135,8 +136,14 @@
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
+
 \input{sections/1introduction.tex}
 \input{sections/2SailinBoatModel.tex}
+\input{sections/3WeatherInt.tex}
+\input{sections/4OptimizerAlgorithm.tex}
+\input{sections/5SimulationsResults.tex}
+\input{sections/6conclusions.tex}
+
 
 \bibliographystyle{unsrt} %ieeetr %alpha %apalike unsrt
 \bibliography{sections/thesisref}
