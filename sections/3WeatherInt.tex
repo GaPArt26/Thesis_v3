@@ -62,7 +62,6 @@ The \acrshort{wrf} is a model that combines global atmospheric models with regio
 
 \subsection{Spatial Representation of the Wind Model}
 
-%Because w
 Weather models are volume representations of a particular region because of this, it is important to identify the data dimensions, to either manipulate or extract properly the variable of interest, like the wind velocity, if the height does not match the CE of the sail, equation \ref{eq:wind_h} should be used to determine it. \par \noindent %the wind velocity. \par
 Figure \ref{fig:map_projection} shows the sketches of the most common type of map projection used on atmospheric modeling. The main idea of these projections is that a set of rays coming from the same axis of rotation project points from the sphere into the surface of projection which latter can be flatten. %The Mercator map projection is base on a cylinder projection which can be make flat when it is cut. %So each point or feature on the sphere is projected on the cylinder, 
 %this allows the flat representation of the sphere %however at some locations some geometrical characteristics are out of proportion. 
@@ -123,6 +122,7 @@ The components of the wind velocity were stored on a grid plane of 199$\times$30
 \begin{equation} \label{eq:hor_AVG_velu}
     u_{{i,j}_{avg}}=\frac{ u_{i,j} + u_{{i+1},j} } {2}
 \end{equation}
+
 \begin{equation} \label{eq:hor_AVG_velv}
     v_{{i,j}_{avg}}=\frac{ v_{i,j} + v_{i,{j+1}} } {2}
 \end{equation}
@@ -184,6 +184,7 @@ Since the sailboat displace through the horizontal plane of the wind model, anot
     v
     \end{bmatrix}
 \end{equation}
+
 \begin{equation} \label{eq:RotMat}
     \mathcal{R}(- \Psi)=
     \begin{bmatrix}
@@ -193,16 +194,19 @@ Since the sailboat displace through the horizontal plane of the wind model, anot
 \end{equation}
 
 %The motion of a rigid body in space can be described by the displacement of the centre of mass of the rigid body plus the change in orientation of the rigid body with respect to some reference system, see
-If the \acrshort{v_tc} is included into the model without waving effects the \acrshort{v_tw} has to be modified before the transformation of equation \ref{eq:velTransFrame}. This is expressed in equation \ref{eq:V_twModifV_C} \cite{allsopp1998stochastic}. However more equations like the \acrshort{b_aw} and \acrshort{v_aw} have to be redefine because of this inclusion. The equations modified are showed next:
+If the \acrshort{v_tc} is included into the model without waving effects the \acrshort{v_tw} has to be modified before the transformation of equation \ref{eq:velTransFrame}. This is expressed in equation \ref{eq:V_twModifV_C} \cite{allsopp1998stochastic}. However more equations like the \acrshort{b_aw} and \acrshort{v_aw} have to be redefine because of this inclusion. The equations modified are showed next:\par
 \begin{equation}\label{eq:V_twModifV_C}
     \vv{V_{tw,c}}=\vv{V_{tw}}- \vv{V_{tc}}
 \end{equation}
+
 \begin{equation}\label{eq:v_twCurBoat}
     V_{tw,c}^b=\mathcal{R} \dot V_{tw,c}
 \end{equation}
+
 \begin{equation} \label{eq:VelCurrWind_boat}
     \vv{V_{aw,c}^b}= \vv{V_{tw,c}^b} - \vv{V_{boat}}
 \end{equation}
+
 \begin{equation}\label{eq:b_tw_c}
     \beta_{aw,c}= atan2 \frac {v_{aw,c}^b}{u_{aw,c}^b}
 \end{equation}
@@ -211,8 +215,6 @@ The transformation of the terms from the sailboat-fixed to the Earth-fixed coord
 %the transformation of the added mass terms from the body fixed to the earth fixed coordinate system is no longer necessary because we now approximate the added mass of the asymmetric sections of the heeled yacht in the horizontal plane directly. 
 
 %Both coordinate systems have their x-axes in the direction of motion of the yacht, but one is always upright while the other one heels with the boat having its xy-plane always perpendicular to the mast if the mast is positioned straight on the boat with no forward or aft rake.
-
-
 
 %$V_{aw}$ and its direction $( \alpha_{aw})$ are highly important because it is the velocity perceived by the moving sailboat and its is given by the difference between the wind and the boat; 
 %% If height exceed width, then the effective sail area is A=pi h/4. The area of the air used in our calculations depends on the height of the sail, this is explained in the prandt and . The force of the boat is given by  Fboat= Fwind cos (a sail-app wind) cos (avw- sail-app wind). If the boat is in downwind condition veq=wind vel/( 1+ (beta)^0.5 ) and beta = drag factor / (density air * Area sail)
@@ -233,3 +235,5 @@ The transformation of the terms from the sailboat-fixed to the Earth-fixed coord
 \nomenclature[S]{$V_{tw,c}$}{True Wind Velocity affected by true current velocity($V_{tc}$)}
 \nomenclature[S]{$V_{tw,c}^b$}{True Wind Velocity affected by $V_{tc}$ respect to the sailboat}
 \nomenclature[S]{$V_{aw,v}^b$}{Apparent Wind Velocity affected by $V_{tc}$ respect to the sailboat}
+
+This section explained the \acrshort{wrf} wind model used for the generation of trajectories on Olympic Sailing Races. The characteristics of such model define some of the parameters of the Path Algorithm, therefore for the Minimal Time trajectory. The scale of the Olympic Sailing Courses is small compared with the coverage of wind models, the impact of this coverage hasn't been evaluate and the use of customize models is very limited. Even when the algorithm to develop does not include any model for current, and it is assume that current velocity \acrshort{v_tc} is constant some modifications have to take place. 
