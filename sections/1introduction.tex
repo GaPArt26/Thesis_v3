@@ -1,4 +1,4 @@
-\chapter{Introduction}
+\chapter{Introduction}  \label{ch:intro}
 
 %Introduce the general area of interest that the contents of the review deal with, setting out any advancements and challenges of interest. Then introduce more fully the specific topic addressed in the review and you can then to go on to state any main aim or objectives to be met. Say very briefly what is to come in the layout of the review. Note: the Introduction should include general references to back up the points made.
 % Establishing the field
@@ -74,7 +74,7 @@ Uncertain weather is a typical condition that yacht competitions and maritime tr
  
  \section{The Aim of the Research}
 This research proposes an algorithm to model sailing trajectories shaped by wind for Olympic Classes which %more specific for Laser (dinghies) competitions %and optimize it to obtain the minimal time for the Laser (Olympic class). 
-can answer the question, \textit{Which is the optimal sailing route shaped by wind for the Laser (Olympic class) when the time and spatial resolution is set constant: every hour and every 10 min?, Which resolution is representative?}. The study suggests that the sensibility of the optimal route due to changes in the wind field and starting direction can define zones and shape the trajectory for minimal time paths. \par 
+can answer the question, \textit{Which is the optimal sailing route shaped by wind for the Laser (Olympic class) when the time and spatial resolution is set constant: every hour and every 10 minutes. Which resolution is the most representative?}. The study suggests that the sensibility of the optimal route due to changes in the wind field and starting direction can define zones and shape the trajectory for minimal time paths. \par 
 
 Moreover, it demonstrates the effects of 3 different time steps and spatial resolutions on the resulting trajectories with its times. This will be done by means of experiments using the optimization of the algorithm proposed. The results(simulations) obtained can be compared against the measurement data of the selected race. In this way, it is possible to identify the size of the differences and quantify the effect of the uncertain weather over the trajectory and times.\par 
 %In other words,%the critical variables influenced by the wind that determine it.
@@ -89,10 +89,8 @@ Moreover, it demonstrates the effects of 3 different time steps and spatial reso
  \section{Terms, conditions, and limitations}
  %This report asses them 
 %%these portable designs %the three concepts  
-%with the multi-criteria analysis method to identify the most feasible design to enhance the force of the upper limb for people without impaired limbs. The design %with the higher score 
-%obtained from the assessment was the powered exoskeleton with monitoring system.
-The algorithm developed is limited to dinghies, the smallest and one of the most used boats on the Olympic classes. More specific, the Laser Class with motion over the XY plane. The 2D model proposed was validated by comparing the results of the simulations obtained against the results Laser races located at Hyères, France during 2018.\par \noindent The experiments to see the effects of the time step on the time and trajectory are the three wind conditions:% tested are: 
-first, a constant wind intensity and direction along the area of the route; the second, considers a forecast wind field as time-space-dependent variable changing every 10 minutes over 1 km by 1km grid size without current and neglecting the wave disturbances and twisting effects on the sail; the last test %condition 
+
+The algorithm developed is limited to dinghies, the smallest and one of the most used boats on the Olympic classes. More specific, the Laser Class with motion over the XY plane. The 2D model proposed was validated by comparing the results of the simulations obtained against the results Laser races located at Hyères, France during 2018.\par \noindent The experiments to see the effects of the time step on the time and trajectory are the three wind conditions: first, a constant wind intensity and direction along the area of the route; the second, considers a forecast wind field as time-space-dependent variable changing every 10 minutes over 1 km by 1km grid size without current and neglecting the wave disturbances and twisting effects on the sail; the last test %condition 
 uses the wind measurements taken at 20 Hz during the competition. The algorithm developed is implemented on MATLAB\textsuperscript{\textregistered} and the optimization tool used is \cite{MatlabOTB}.\par 
 
 Olympic Classes like the dinghy is not a widespread research topic. Besides most of the findings related to path optimization for boats are related to cargo ships and vessels, where the main objective is to minimize fuel costs because this ship can be set to navigate at a constant speed. A smaller amount of researches but more related to sports are the ones related to yachts; the influence of the wind is not the same as for the Olympic Classes. \par \noindent 
