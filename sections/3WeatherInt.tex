@@ -15,7 +15,7 @@ The importance of the wind is not only because it is considered the main propuls
 \nomenclature[A]{NWP}{Numerical Weather Prediction}
 \nomenclature[A]{WRF}{Weather Research and Forecasting Model}
 
-\section{The application of the weather models into Olympic Sailing Races}
+\section{The application of the weather models into Olympic Sailing Races} \label{sec:WindModel_on_Olympics}
 %WRF weather models into Olympic sailing races}
 
 A wind model forecast is based on a 3-dimensional time-space model, which can be described as a 4-dimensional model. The resolution of this model or granularity is defined by the size of the data sets that describe it. Moreover, the use of weather models during the summer Olympic Games is not new, but neither widely used. In sailing, the main use of them is as an informative source for the organizers. It helps to warranty the safety of the competitors, like in the Para-Olympic events, and reduce delays due to the wind conditions of the competition  \cite{spark2004wind}, \cite{sheng2009structure}, \cite{golding2014forecasting}. Only \cite{giannaros2018ultrahigh} refers to the \acrshort{nwp} model as a tool to develop a strategic plan to course the race for a sailing team. \par 
@@ -34,13 +34,13 @@ Before \cite{giannaros2018ultrahigh}, only \cite{philpott2001optimising} and \ci
 
 The \acrshort{wrf} model can provide the detailed information required by the sailors and coaches of Olympics Classes; however, it demands time and high-performance computing equipment, without considering the preliminary input data and validation process it requires to have a feasible and reliable model to work with. In the other hand, the inclusion of weather models for path generation has not evaluated the sensibility of the trajectory due to the granularity of the model. The next section will provide the details about the \acrshort{wrf} model used for this project as well as its general characteristics. \par 
 
-\section{Components of the WRF Wind Model}
+\section{Components of the WRF Wind Model} \label{sec:WRF_WindM}
 Weather models, like wind or current models, are discretized over the space and time because the data is organized into a four-dimensional grid data sets. The most used computer formats to share this type of models are GRIB(.grib) and NETCDF(.nc). The form in which they organize the information may differ but both formats contain the volume representation of the wind model. A straightforward format sometimes used to share the information is the tabular format with all the variables as headers. \par
 
 %\subsection{The WRF Model }
 The \acrshort{wrf} is a model that combines global atmospheric models with regional measurements to developed high-resolution models. This means that regional models are inserted within global models, as a result, its range of applications is from meters to many latitude-longitude degrees. The integration allows the identification of small climate variations and other types of phenomena, like precipitations. The incorporation of observable data measured at a constant rate and at known locations given flexibility to the model and unification of the available data \cite{warner2010numerical}. \par
 
-\subsection{Spatial Representation of the Wind Model}
+\subsection{Spatial Representation of the Wind Model} \label{sec:Space_WindM}
 
 Weather models are volume representations of a particular region, because of this, it is important to identify the data dimensions, to either manipulate or extract properly the variable of interest, like the wind velocity, if the height does not match the CE of the sail, equation \ref{eq:wind_h} should be used to determine it. \par \noindent
 
@@ -57,7 +57,7 @@ The points on the spatial grid of the \acrshort{wrf} model are quasi-regular bec
 
 Under some circumstances, the model uses a nested approach; where $\Delta x$ is reduced as it gets close to the area of interest. The size of the grid was a crucial concern for \cite{giannaros2018ultrahigh} since the topography of public databases were replaced by new sets that at least match the size of the stipulated grid.\par
 
-\subsection{Time Representation on the Wind Model}
+\subsection{Time Representation on the Wind Model}\label{sec:Time_onWindM}
 The time dimension on the forecast models is limited by the \textit{Courant number} and in consequence with the spatial resolution required. Modifications on the grid have implications closely related with the computational effort; since on each time step the space equations on each grids point have to be solved. The measurement data is another element to incorporate and related to time. \par 
 
 The computational effort for weather models results from the space granularity. Meanwhile, the time step brings stability to the model. Then a small time step provides stable solutions to the equations. While the computational effort is related to the space granularity in a non-linear form. For example, if only one space dimension is double (by a factor of 2), the computational effort time will be 8 times more. \par 
@@ -71,7 +71,7 @@ The use of measurement data has an impact on the quality of the results because 
     \label{fig:data_meas_integration}
 \end{figure}
 
-\section{The WRF model for the World Cup Series 2018 Hyéres, France}
+\section{The WRF model for the World Cup Series 2018 Hyéres, France}\label{sec:WRF_WindM_FR}
 
 The algorithm for the minimal time path for sailing competitions was developed considering the characteristics of the \acrshort{wrf} wind model on a date of competitions so wind measurements are available. The measurements served not only to set-up the model but also to compare their results. Since \cite{giannaros2018ultrahigh} found that the topography allocation and representation in addition to the initialization of the model have a great impact on the results. \par
 
@@ -98,7 +98,7 @@ The vertical dimension, height, of the model where discretized over 50 non-unifo
 \end{equation}
 
 \begin{equation}\label{eq:b_tw}
-    \beta_{tw_{i,j}}= atan2 \frac {v_{i,j}}{u_{i,j}}
+    \beta_{tw_{i,j}}= atan2d \frac {v_{i,j}}{u_{i,j}}
 \end{equation}
 
 The 24 hrs forecast model was discretized in time steps of 10 minutes or ${1} \backslash {6}$ hr. This means that there are 145 steps on the time dimension. Figure \ref{fig:wind_model_FR} shows the wind model provided at 2 different hours, the difference of time is only 1 hour and 10 minutes. The red cross is the center of laser course area named Charly and the black arrows indicate the direction of the wind. The figure also shows the relevance on the scale or granularity; on one side public forecast weather are larger than the one showed here; in the other hand, the interested region is too small even when the granularity was increased significantly. \par    
@@ -112,7 +112,7 @@ The 24 hrs forecast model was discretized in time steps of 10 minutes or ${1} \b
 \end{figure}
 In summary, the wind model provided is a 4D(\textit{(x,y,z,t)}) grid model of 198 $\times$ 301 $\times$ 50 $\times$ 145 datasets with a space resolution ($\Delta x$) of 1 km and time step ($\Delta t$) of 10 minutes(600 seconds). This kind of granularity is defined as high resolution, and despite the size of the grid the area of competition, its center looks small. This is one of the reasons why \cite{giannaros2018ultrahigh} developed a model with ultrahigh space resolution.\par  
 
-\section{Reference Frames the relation between wind and sailboat velocities}
+\section{Reference Frames the relation between wind and sailboat velocities} \label{sec:RefFrames}
 
 The wind velocity and direction determines the velocity of the sailboat. However, the wind velocity perceived by the seamanship when the sailboat moves is not the same as the velocity of the sailboat. This perceived velocity is known as the \textit{apparent wind} (\acrshort{v_aw}) and it not only includes the velocity and direction of the wind but also the velocity and direction of the current (\acrshort{v_tc} and \acrshort{b_tc}). The \acrshort{v_aw} and \acrshort{b_aw} are not new concepts, they were introduced on section \ref{sec:wind_vel_trian} and on equation \ref{eq:vel_appVector}. \par
 
@@ -129,7 +129,7 @@ For the purposes of this research, it is assumed that the Earth circumference is
    
 \begin{figure}[hbt!]
     \centering
-    \includegraphics[width=.85 \hsize]{boat_csys.png}
+    \includegraphics[width=.8 \hsize]{boat_csys.png}
     \caption{Sailboat reference coordinate system and Earth-fixed reference frame \cite{keuning2004mathematical}. }
     \label{fig:boat_Csys}
 \end{figure}
@@ -166,7 +166,7 @@ If the \acrshort{v_tc} is included in the model without waving effects the \acrs
 \end{equation}
 
 \begin{equation}\label{eq:b_tw_c}
-    \beta_{aw,c}= atan2 \frac {v_{aw,c}^b}{u_{aw,c}^b}
+    \beta_{aw,c}= atan2d \frac {v_{aw,c}^b}{u_{aw,c}^b}
 \end{equation}
 
 The transformation of the terms from the sailboat-fixed to the Earth-fixed coordinate system and \acrshort{v_tw} using \acrshort{RM} is not necessary on the equations from \ref{sec:eq_of_motion} since they were already included in their development \cite{keuning2004mathematical}.\par  
